@@ -1,0 +1,4 @@
+---
+nginx_user: www-data
+nginx_root: /var/www/html
+nginx_server_name: will-it-scale.in

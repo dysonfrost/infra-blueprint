@@ -1,0 +1,34 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Deploy nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Reload nginx
+
+- name: Set instance facts
+  set_fact:
+    instance_id: "{{ inventory_hostname }}"
+    ansible_hostname: "{{ ansible_facts['hostname'] }}"
+    deployment_time: "{{ ansible_facts['date_time']['iso8601'] }}"
+
+- name: Deploy static page
+  template:
+    src: index.html.j2
+    dest: "{{ nginx_root }}/index.html"
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_user }}"
+    mode: "0644"
+
+- name: Ensure nginx is started and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: true
