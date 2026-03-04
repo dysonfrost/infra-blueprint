@@ -8,7 +8,7 @@ variable "aws_region" {
 variable "project_name" {
   type        = string
   description = "Name of the project"
-  default     = "dataiku-assignment"
+  default     = "infra-blueprint"
 
 }
 
@@ -21,17 +21,11 @@ variable "vpc_cidr" {
 variable "key_pair_name" {
   type        = string
   description = "Name of the pre-existing EC2 key pair"
-  default     = "dataiku-assignment-keypair"
+  default     = "infra-blueprint-keypair"
 }
 
 variable "domain_name" {
   type        = string
   description = "Existing domain name"
   default     = "will-it-scale.in"
-}
-
-variable "ssh_public_ip" {
-  type        = string
-  description = "Own public IP from env"
-  sensitive   = true
 }
