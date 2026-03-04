@@ -17,3 +17,9 @@ variable "vpc_cidr" {
   description = "VPC CIDR block"
   default     = "10.0.0.0/16"
 }
+
+variable "ssh_public_ip" {
+  type        = string
+  description = "Own public IP from env"
+  sensitive   = true
+}
