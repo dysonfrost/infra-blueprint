@@ -24,6 +24,12 @@ variable "key_pair_name" {
   default     = "dataiku-assignment-keypair"
 }
 
+variable "domain_name" {
+  type        = string
+  description = "Existing domain name"
+  default     = "will-it-scale.in"
+}
+
 variable "ssh_public_ip" {
   type        = string
   description = "Own public IP from env"
