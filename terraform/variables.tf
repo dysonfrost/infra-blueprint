@@ -18,6 +18,12 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
+variable "key_pair_name" {
+  type        = string
+  description = "Name of the pre-existing EC2 key pair"
+  default     = "dataiku-assignment-keypair"
+}
+
 variable "ssh_public_ip" {
   type        = string
   description = "Own public IP from env"
