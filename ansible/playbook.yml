@@ -1,0 +1,14 @@
+---
+- name: Configure webservers
+  hosts: webservers
+  become: true
+
+  roles:
+    - common
+    - nginx
+
+  post_tasks:
+    - name: Deployment complete
+      debug:
+        msg: "Deployment successful! Visit https://will-it-scale.in"
+      run_once: true
