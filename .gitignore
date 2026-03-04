@@ -3,6 +3,8 @@
 
 ### Ansible ###
 *.retry
+.ssh_config
+inventory.ini
 
 ### dotenv ###
 .env
