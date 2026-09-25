@@ -114,7 +114,7 @@ make deploy   # configure instances with Ansible (~2 min)
 
 ## Design decisions
 
-- **Public subnets only** — kept simple for the assignment. In production, EC2 instances would sit in private subnets behind a NAT gateway, with the ALB as the only public-facing entry point.
+- **Public subnets only** — kept simple for this lab. In production, EC2 instances would sit in private subnets behind a NAT gateway, with the ALB as the only public-facing entry point.
 - **Single shared route table** — both public subnets share the same route table since they have identical routing needs. In production with private subnets, each would have its own route table (one per NAT gateway for AZ-level HA).
 - **Fixed ASG capacity** — `min = max = desired = 2` keeps the setup predictable. In production, scaling policies would be added based on CPU or request metrics.
 - **SSM Session Manager** — EC2 instances are accessible via SSM tunnel instead of a public bastion host. Port 22 is not exposed to the internet.
